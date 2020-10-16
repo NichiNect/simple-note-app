@@ -20,7 +20,9 @@ window.Vue = require('vue');
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-
+import Toasted from 'vue-toasted';
+ 
+Vue.use(Toasted)
 Vue.use(VueRouter);
 
 import routes from './router/index';

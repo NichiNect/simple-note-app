@@ -2,12 +2,6 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <div v-if="successMessage" class="alert alert-warning alert-dismissible fade show" role="alert">
-                {{ successMessage }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <div class="card">
                 <div class="card-header">Create New Note</div>
                 <div class="card-body">
@@ -52,7 +46,6 @@ export default {
                 subject: '',
                 description: ''
             },
-            successMessage: '',
             subjects: [],
             theErrors: []
         }
@@ -78,9 +71,18 @@ export default {
                     this.form.subject = "";
                     this.form.description = "";
                     this.theErrors = [];
-                    this.successMessage = response.data.message;
+
+                    this.$toasted.show(response.data.message, {
+                        type: 'success',
+                        duration: 3000
+                    });
                 }
             } catch (e) {
+                this.$toasted.show("Something wrong, we can feel it", {
+                    type: 'error',
+                    duration: 3000
+                });
+
                 this.theErrors = e.response.data.errors;
             }
         }
