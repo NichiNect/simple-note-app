@@ -2046,6 +2046,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2054,7 +2062,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         subject: '',
         description: ''
       },
-      subjects: []
+      successMessage: '',
+      subjects: [],
+      theErrors: []
     };
   },
   mounted: function mounted() {
@@ -2097,10 +2107,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
+                _context2.prev = 0;
+                _context2.next = 3;
                 return axios.post('/api/notes/create-new-notes', _this2.form);
 
-              case 2:
+              case 3:
                 response = _context2.sent;
 
                 if (response.status == 200) {
@@ -2108,14 +2119,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this2.form.title = "";
                   _this2.form.subject = "";
                   _this2.form.description = "";
+                  _this2.theErrors = [];
+                  _this2.successMessage = response.data.message;
                 }
 
-              case 4:
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                _this2.theErrors = _context2.t0.response.data.errors;
+
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[0, 7]]);
       }))();
     }
   }
@@ -21499,6 +21520,24 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-6" }, [
+        _vm.successMessage
+          ? _c(
+              "div",
+              {
+                staticClass: "alert alert-warning alert-dismissible fade show",
+                attrs: { role: "alert" }
+              },
+              [
+                _vm._v(
+                  "\r\n                " +
+                    _vm._s(_vm.successMessage) +
+                    "\r\n                "
+                ),
+                _vm._m(0)
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _vm._v("Create New Note")
@@ -21544,7 +21583,18 @@ var render = function() {
                         _vm.$set(_vm.form, "title", $event.target.value)
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm.theErrors.title
+                    ? _c(
+                        "small",
+                        {
+                          staticClass: "form-text text-danger",
+                          attrs: { id: "error_title" }
+                        },
+                        [_vm._v(_vm._s(_vm.theErrors.title[0]))]
+                      )
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
@@ -21601,7 +21651,18 @@ var render = function() {
                       })
                     ],
                     2
-                  )
+                  ),
+                  _vm._v(" "),
+                  _vm.theErrors.subject
+                    ? _c(
+                        "small",
+                        {
+                          staticClass: "form-text text-danger",
+                          attrs: { id: "error_subject" }
+                        },
+                        [_vm._v(_vm._s(_vm.theErrors.subject[0]))]
+                      )
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
@@ -21634,10 +21695,21 @@ var render = function() {
                         _vm.$set(_vm.form, "description", $event.target.value)
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm.theErrors.description
+                    ? _c(
+                        "small",
+                        {
+                          staticClass: "form-text text-danger",
+                          attrs: { id: "error_description" }
+                        },
+                        [_vm._v(_vm._s(_vm.theErrors.description[0]))]
+                      )
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
-                _vm._m(0)
+                _vm._m(1)
               ]
             )
           ])
@@ -21647,6 +21719,23 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "alert",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
