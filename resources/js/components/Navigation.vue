@@ -13,15 +13,16 @@
                 <li class="nav-item">
                     <router-link class="nav-link" :to="{ name: 'pages.about' }">About</router-link>
                 </li>
-            </ul>
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Aksi</a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Note</a>
                     <div class="dropdown-menu">
-                        <router-link class="dropdown-item" :to="{ name: 'notes.create' }">Create New Note</router-link>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <router-link class="dropdown-item" exact :to="{ name: 'notes.create' }">Create New Note</router-link>
+                        <router-link class="dropdown-item" exact :to="{ name: 'notes.table' }">Table of Notes</router-link>
                     </div>
                 </li>
+            </ul>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
             </ul>
         </div>
     </div>

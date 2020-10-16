@@ -2,6 +2,8 @@ import Home from '../views/Home';
 import About from '../views/About';
 
 import NewNote from '../views/notes/Create';
+import TableNote from '../views/notes/Table';
+import ShowNote from '../views/notes/Show';
 
 export default {
     mode: 'history',
@@ -18,9 +20,19 @@ export default {
             component: About,
         },
         {
-            path: '/create-new-note',
+            path: '/notes/create-new-note',
             name: 'notes.create',
             component: NewNote,
+        },
+        {
+            path: '/notes/table',
+            name: 'notes.table',
+            component: TableNote,
+        },
+        {
+            path: '/notes/:noteSlug',
+            name: 'notes.show',
+            component: ShowNote,
         }
     ]
 }
