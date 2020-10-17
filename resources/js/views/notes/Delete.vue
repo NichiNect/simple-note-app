@@ -1,5 +1,5 @@
 <template>
-<button ref="deleteNote" @click="destroyNote">Delete</button>
+<button ref="deleteNote" @click="destroyNote" class="btn btn-danger mx-2">Delete</button>
 </template>
 
 <script>

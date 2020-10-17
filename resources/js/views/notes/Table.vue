@@ -18,7 +18,7 @@
                 <td>{{ note.subject }}</td>
                 <td>{{ note.published }}</td>
                 <td>
-                    <router-link :to="{ name: 'notes.edit', params: {noteSlug: note.slug} }">Edit</router-link>
+                    <router-link :to="{ name: 'notes.edit', params: {noteSlug: note.slug} }" class="btn btn-warning text-white">Edit</router-link>
                     <delete-note :endpoint="note.slug" />
                 </td>
             </tr>

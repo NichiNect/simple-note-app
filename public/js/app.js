@@ -2049,6 +2049,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2057,6 +2074,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         subject: '',
         description: ''
       },
+      loading: false,
       subjects: [],
       theErrors: []
     };
@@ -2101,11 +2119,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
+                _this2.loading = true;
+                _context2.prev = 1;
+                _context2.next = 4;
                 return axios.post('/api/notes/create-new-notes', _this2.form);
 
-              case 3:
+              case 4:
                 response = _context2.sent;
 
                 if (response.status == 200) {
@@ -2114,6 +2133,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this2.form.subject = "";
                   _this2.form.description = "";
                   _this2.theErrors = [];
+                  _this2.loading = false;
 
                   _this2.$toasted.show(response.data.message, {
                     type: 'success',
@@ -2121,12 +2141,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 }
 
-                _context2.next = 11;
+                _context2.next = 13;
                 break;
 
-              case 7:
-                _context2.prev = 7;
-                _context2.t0 = _context2["catch"](0);
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](1);
+                _this2.loading = false;
 
                 _this2.$toasted.show("Something wrong, we can feel it", {
                   type: 'error',
@@ -2135,12 +2156,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this2.theErrors = _context2.t0.response.data.errors;
 
-              case 11:
+              case 13:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 7]]);
+        }, _callee2, null, [[1, 8]]);
       }))();
     }
   }
@@ -2277,13 +2298,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       form: [],
       subjects: [],
       theErrors: [],
-      selected: ''
+      selected: '',
+      loading: false
     };
   },
   mounted: function mounted() {
@@ -2369,14 +2408,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
+                _this4.loading = true;
                 _this4.form['subject'] = _this4.selected || _this4.form.subjectID;
-                _context4.next = 3;
+                _context4.next = 4;
                 return axios.patch("/api/notes/".concat(_this4.$route.params.noteSlug, "/edit"), _this4.form);
 
-              case 3:
+              case 4:
                 response = _context4.sent;
 
                 if (response.status === 200) {
+                  _this4.loading = false;
+
                   _this4.$toasted.show(response.data.message, {
                     type: 'success',
                     duration: 3000
@@ -2385,7 +2427,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this4.$router.push('/notes/table');
 
-              case 6:
+              case 7:
               case "end":
                 return _context4.stop();
             }
@@ -22107,7 +22149,138 @@ var render = function() {
                     : _vm._e()
                 ]),
                 _vm._v(" "),
-                _vm._m(0)
+                _c("div", { staticClass: "form-group mt-4" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-dark btn-block",
+                      attrs: { type: "submit" }
+                    },
+                    [
+                      _vm._v(
+                        "\r\n                                New Note\r\n                                "
+                      ),
+                      _vm.loading === true
+                        ? [
+                            _c(
+                              "svg",
+                              {
+                                attrs: {
+                                  "xmlns:svg": "http://www.w3.org/2000/svg",
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                                  version: "1.0",
+                                  width: "28px",
+                                  height: "28px",
+                                  viewBox: "0 0 128 128",
+                                  "xml:space": "preserve"
+                                }
+                              },
+                              [
+                                _c(
+                                  "g",
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#000000",
+                                        "fill-opacity": "1"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(45 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(90 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(135 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(180 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(225 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(270 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(315 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("animateTransform", {
+                                      attrs: {
+                                        attributeName: "transform",
+                                        type: "rotate",
+                                        values:
+                                          "0 64 64;45 64 64;90 64 64;135 64 64;180 64 64;225 64 64;270 64 64;315 64 64",
+                                        calcMode: "discrete",
+                                        dur: "720ms",
+                                        repeatCount: "indefinite"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]
+                            )
+                          ]
+                        : _vm._e()
+                    ],
+                    2
+                  )
+                ])
               ]
             )
           ])
@@ -22116,23 +22289,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group mt-4" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-outline-dark btn-block",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("New Article")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -22154,9 +22311,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("button", { ref: "deleteNote", on: { click: _vm.destroyNote } }, [
-    _vm._v("Delete")
-  ])
+  return _c(
+    "button",
+    {
+      ref: "deleteNote",
+      staticClass: "btn btn-danger mx-2",
+      on: { click: _vm.destroyNote }
+    },
+    [_vm._v("Delete")]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22342,7 +22505,138 @@ var render = function() {
                     : _vm._e()
                 ]),
                 _vm._v(" "),
-                _vm._m(0)
+                _c("div", { staticClass: "form-group mt-4" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-dark btn-block",
+                      attrs: { type: "submit" }
+                    },
+                    [
+                      _vm._v(
+                        "\r\n                                Update\r\n                                "
+                      ),
+                      _vm.loading === true
+                        ? [
+                            _c(
+                              "svg",
+                              {
+                                attrs: {
+                                  "xmlns:svg": "http://www.w3.org/2000/svg",
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                                  version: "1.0",
+                                  width: "28px",
+                                  height: "28px",
+                                  viewBox: "0 0 128 128",
+                                  "xml:space": "preserve"
+                                }
+                              },
+                              [
+                                _c(
+                                  "g",
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#000000",
+                                        "fill-opacity": "1"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(45 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(90 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(135 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(180 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(225 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(270 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M38.52 33.37L21.36 16.2A63.6 63.6 0 0 1 59.5.16v24.3a39.5 39.5 0 0 0-20.98 8.92z",
+                                        fill: "#c0c0c0",
+                                        "fill-opacity": "0.25",
+                                        transform: "rotate(315 64 64)"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("animateTransform", {
+                                      attrs: {
+                                        attributeName: "transform",
+                                        type: "rotate",
+                                        values:
+                                          "0 64 64;45 64 64;90 64 64;135 64 64;180 64 64;225 64 64;270 64 64;315 64 64",
+                                        calcMode: "discrete",
+                                        dur: "720ms",
+                                        repeatCount: "indefinite"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]
+                            )
+                          ]
+                        : _vm._e()
+                    ],
+                    2
+                  )
+                ])
               ]
             )
           ])
@@ -22351,23 +22645,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group mt-4" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-outline-dark btn-block",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Update")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -22469,6 +22747,7 @@ var render = function() {
                 _c(
                   "router-link",
                   {
+                    staticClass: "btn btn-warning text-white",
                     attrs: {
                       to: {
                         name: "notes.edit",
