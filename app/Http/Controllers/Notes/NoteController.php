@@ -41,4 +41,26 @@ class NoteController extends Controller
             'note' => $note,
         ]);
     }
+
+    public function update(Note $note)
+    {
+        request()->validate([
+            'subject' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+        
+        $subject = Subject::findOrFail(request('subject'));
+        $note->update([
+            'subject_id' => $subject->id,
+            'title' => request('title'),
+            'slug' => \Str::slug(request('title')),
+            'description' => request('description'),
+        ]);
+
+        return response()->json([
+            'message' => 'Note was success updated',
+            'note' => $note,
+        ]);
+    }
 }

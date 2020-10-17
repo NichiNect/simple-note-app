@@ -19,6 +19,7 @@ Route::namespace('Notes')->group(function() {
         Route::post('/create-new-notes', 'NoteController@store');
         Route::get('', 'NoteController@index');
         Route::get('/{note:slug}', 'NoteController@show')->name('notes.show');
+        Route::patch('/{note:slug}/edit', 'NoteController@update');
     });
 
     Route::prefix('subjects')->group(function() {

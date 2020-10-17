@@ -6,6 +6,7 @@
             <th>Title</th>
             <th>Subject</th>
             <th>Published at</th>
+            <th>Action</th>
         </thead>
         <tbody>
             <tr v-for="note in notes" :key="note.id">
@@ -16,6 +17,9 @@
                 </td>
                 <td>{{ note.subject }}</td>
                 <td>{{ note.published }}</td>
+                <td>
+                    <router-link :to="{ name: 'notes.edit', params: {noteSlug: note.slug} }">Edit</router-link>
+                </td>
             </tr>
         </tbody>
     </table>
