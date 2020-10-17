@@ -2253,6 +2253,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2260,7 +2262,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
-    this.getNotes;
+    this.getNotes();
   },
   methods: {
     getNotes: function getNotes() {
@@ -2277,7 +2279,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 response = _context.sent;
-                _this.notes = response.data.data;
+
+                if (response.status === 200) {
+                  _this.notes = response.data.data;
+                }
 
               case 4:
               case "end":
@@ -21947,7 +21952,13 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v(_vm._s(note.title))]
+                  [
+                    _vm._v(
+                      "\r\n                        " +
+                        _vm._s(note.title) +
+                        "\r\n                    "
+                    )
+                  ]
                 )
               ],
               1

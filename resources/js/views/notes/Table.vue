@@ -10,7 +10,9 @@
         <tbody>
             <tr v-for="note in notes" :key="note.id">
                 <td>
-                    <router-link :to="{ name: 'notes.show', params: {noteSlug: note.slug} }">{{ note.title }}</router-link>
+                    <router-link :to="{ name: 'notes.show', params: {noteSlug: note.slug} }">
+                        {{ note.title }}
+                    </router-link>
                 </td>
                 <td>{{ note.subject }}</td>
                 <td>{{ note.published }}</td>
@@ -25,15 +27,17 @@ export default {
     data() {
         return {
             notes: []
-        }
+        };
     },
     mounted() {
-        this.getNotes;
+        this.getNotes();
     },
     methods: {
         async getNotes() {
             let response = await axios.get('/api/notes');
-            this.notes = response.data.data;
+            if (response.status === 200) {
+                this.notes = response.data.data;
+            }
         }
     }
 }
