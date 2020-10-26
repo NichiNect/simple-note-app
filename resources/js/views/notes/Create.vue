@@ -15,7 +15,7 @@
                             <label for="subject">Subject</label>
                             <select v-model="form.subject" class="form-control" id="subject">
                                 <option value="" selected disabled>-- Please Select One --</option>
-                                <option v-for="subject in subjects" :key="subject.id" :value="subject.id">{{ subject.name }}</option>
+                                <option v-for="subject in subjects" :key="subject.id" :value="subject.id">{{ subject.subject }}</option>
                             </select>
                             <small v-if="theErrors.subject" id="error_subject" class="form-text text-danger">{{ theErrors.subject[0] }}</small>
                         </div>
@@ -68,16 +68,14 @@ export default {
             theErrors: []
         }
     },
-
     mounted() {
         this.getSubjects();
     },
-
     methods: {
         async getSubjects() {
             let response = await axios.get('/api/subjects');
             if (response.status === 200) {
-                this.subjects = response.data;
+                this.subjects = response.data.data;
             }
         },
         async store() {

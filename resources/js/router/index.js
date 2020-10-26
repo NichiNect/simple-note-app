@@ -6,6 +6,9 @@ import TableNote from '../views/notes/Table';
 import ShowNote from '../views/notes/Show';
 import EditNote from '../views/notes/Edit';
 
+import TableSubject from '../views/subjects/TableSubject';
+import CreateSubject from '../views/subjects/Create';
+
 export default {
     mode: 'history',
     linkActiveClass: 'active',
@@ -39,6 +42,17 @@ export default {
             path: '/notes/:noteSlug/edit',
             name: 'notes.edit',
             component: EditNote,
+        },
+
+        {
+            path: '/subjects',
+            name: 'subjects.table',
+            component: TableSubject,
+        },
+        {
+            path: '/subjects/create-new-subject',
+            name: 'subjects.create',
+            component: CreateSubject,
         },
     ]
 }

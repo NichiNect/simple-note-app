@@ -16,8 +16,15 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Note</a>
                     <div class="dropdown-menu">
-                        <router-link class="dropdown-item" exact :to="{ name: 'notes.create' }">Create New Note</router-link>
                         <router-link class="dropdown-item" exact :to="{ name: 'notes.table' }">Table of Notes</router-link>
+                        <router-link class="dropdown-item" exact :to="{ name: 'notes.create' }">Create New Note</router-link>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Subjects</a>
+                    <div class="dropdown-menu">
+                        <router-link class="dropdown-item" exact :to="{ name: 'subjects.table' }">Table of Subjects</router-link>
+                        <router-link class="dropdown-item" exact :to="{ name: 'subjects.create' }">Create New Subject</router-link>
                     </div>
                 </li>
             </ul>

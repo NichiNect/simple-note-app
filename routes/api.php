@@ -25,5 +25,6 @@ Route::namespace('Notes')->group(function() {
 
     Route::prefix('subjects')->group(function() {
         Route::get('', 'SubjectController@index');
+        Route::post('/create-new-subject', 'SubjectController@store');
     });
 });

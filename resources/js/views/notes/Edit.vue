@@ -17,7 +17,7 @@
                                 <option :value="form.subjectID" v-text="form.subject"></option>
                                 <template v-for="subject in subjects">
                                     <option v-if="form.subjectID !== subject.id" :key="subject.id" :value="subject.id">
-                                        {{ subject.name }}
+                                        {{ subject.subject }}
                                     </option>
                                 </template>
                             </select>
@@ -79,7 +79,7 @@ export default {
         async getSubjects() {
             let response = await axios.get('/api/subjects');
             if (response.status === 200) {
-                this.subjects = response.data;
+                this.subjects = response.data.data;
             }
         },
         async getNote() {
