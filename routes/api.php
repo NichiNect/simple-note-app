@@ -28,5 +28,6 @@ Route::namespace('Notes')->group(function() {
         Route::post('/create-new-subject', 'SubjectController@store');
         Route::get('/{subject:slug}', 'SubjectController@show')->name('subjects.show');
         Route::patch('/{subject:slug}/edit', 'SubjectController@update');
+        Route::delete('{subject:slug}/delete', 'SubjectController@destroy');
     });
 });

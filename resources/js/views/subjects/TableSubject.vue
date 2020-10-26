@@ -17,6 +17,7 @@
                         <td>{{ subject.created_at }}</td>
                         <td>
                             <router-link :to="{ name: 'subjects.edit', params: {subjectSlug: subject.slug} }" class="btn btn-warning text-white">Edit</router-link>
+                            <delete-subject :endpoint="subject.slug" />
                         </td>
                     </tr>
                 </tbody>
@@ -27,7 +28,11 @@
 </template>
 
 <script>
+import DeleteSubject from './Delete';
 export default {
+    components: {
+        'DeleteSubject': DeleteSubject
+    },
     data() {
         return {
             subjects: []
