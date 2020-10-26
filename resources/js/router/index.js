@@ -8,6 +8,7 @@ import EditNote from '../views/notes/Edit';
 
 import TableSubject from '../views/subjects/TableSubject';
 import CreateSubject from '../views/subjects/Create';
+import EditSubject from '../views/subjects/Edit';
 
 export default {
     mode: 'history',
@@ -53,6 +54,11 @@ export default {
             path: '/subjects/create-new-subject',
             name: 'subjects.create',
             component: CreateSubject,
+        },
+        {
+            path: '/subjects/:subjectSlug/edit',
+            name: 'subjects.edit',
+            component: EditSubject,
         },
     ]
 }

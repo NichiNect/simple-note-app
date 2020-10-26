@@ -48,21 +48,31 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subject $subject)
     {
-        //
+        return SubjectResource::make($subject);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Subject $subject)
     {
-        //
+        request()->validate([
+            'subject' => 'required'
+        ]);
+        
+        $subject = Subject::where('slug', $subject->slug)->update([
+            'name' => request()->subject,
+            'slug' => \Str::slug(request()->subject)
+        ]);
+
+        return response()->json([
+            'message' => 'New subject was added',
+            'subject' => $subject
+        ]);
     }
 
     /**

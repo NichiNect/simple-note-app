@@ -16,7 +16,7 @@
                         <td>{{ subject.slug }}</td>
                         <td>{{ subject.created_at }}</td>
                         <td>
-                            <a href="awokawoka">asadas</a>
+                            <router-link :to="{ name: 'subjects.edit', params: {subjectSlug: subject.slug} }" class="btn btn-warning text-white">Edit</router-link>
                         </td>
                     </tr>
                 </tbody>
