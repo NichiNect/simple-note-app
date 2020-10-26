@@ -18,7 +18,8 @@ class SubjectResource extends JsonResource
             'id' => $this->id,
             'subject' => $this->name,
             'slug' => $this->slug,
-            'created_at' => $this->created_at->format('d F, Y'),  
+            'created_at' => $this->created_at->format('d F, Y'),
+            'link' => route('subjects.show', $this->slug)
         ];
     }
 }
